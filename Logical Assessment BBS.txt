@@ -1,0 +1,94 @@
+Name: Bibhuti Bhushan Saha
+email: bibhuticodes@gmail.com
+
+
+
+Logical Assessment:
+
+1.> Configure a CRON job to run 24x7.
+	
+	step 1: cd /var/spool/cron
+	step 2: open "crontabs" file in any text editor.
+	step 3: append "* * * * * /path/to/your-script.sh"
+	step 4: save and quit.
+Note: here * means any combination of time (day, hours, minutes, seconds).
+
+2.> Best method to handel 404 errors
+	
+	1.) Customize a 404 page:
+		Whenever the rquested resource is not available,
+		redirect the client to a page giving info for the 
+		changes made to site and some way to contact developer
+		to communicate the unreachabitiy of site. 
+
+	2.) Check for the broken links on website:
+		Use tools such as W3C Link checker to check all the resources,
+		identify the broken links and trouble shoot the API, code or web server.
+
+	3.) Use Appropriate HTTP status codes:
+		The resource requested may be ureachable for technical issues, But if the
+		resource is removed intentionally, it could still be indexed. use proper 
+		HTTP status codes such as 204, 301, 410 to prevent it from getting indexed.
+
+3.> MySQL dump gives syntax error on a new Linux server.
+
+	1.) Check for the version of MySQL the server is using. And try to Install specefic version
+	the syntax used.
+	2.) Set the character encoding correctly. if the dump file has non-ASCII chars,
+	set encoding using "SET NAMES 'utf8' or SET NAMES 'ascii';"
+	3.) Use SQL syntax checker such as "Ever SQL".
+
+4.> Recover data when your server chrashes:
+	
+	1.) Method 1 ( recover data from Saturday ):
+		Copy the Databasefile ending with ".db" from your old system
+		from "/var/lib/mysql/" and then paste it inside the new 
+		system inside same /var/lib/mysql/name-of-your-database.db.
+	2.) Method 2 ( recover data from Friday from the backup)
+		Load the dump using the following command
+		mysql -u username -p database_name < backup_file.sql.
+
+5.> Best practices for images on a website.
+
+	1.) Choose the right fie format for the pupose accordingly:
+		Each image format has different compression techniqes associated with it
+		suited for different purpose. 
+		JPEG => instagram photos and such.
+		PNG => best for logos, digital art.
+		TIFF => High resolution lossless, for very detailed photos, 360 degree city view and such
+	2.) Label images accurately:
+		 forexample. 
+		<figure>
+			<img src="tiquet.png" height="150" width="90">
+			<figcaption>Your label goes here</figcaption>
+		</figure>
+		And add "alt=" attribute to the image tag. for example
+		<img src="tiquet.png" height="150" width="90" alt="Description of image goes here">
+		It hels in SEO as well as Accessablity.
+	3.) Choose method to store your images.
+		You can store images as BLOBS in order to fit inside the DB directly. 
+		This is useful when you do not have to move your database frequently and
+		it releived you from headache to manage your resources (imgs) saparately 
+		from DB. This can be slow in processing. 
+		
+		You can store your images as files somewhere separate from DB and use file paths to
+		refer it. this is faster, usually keeps the DB size small enough, But management of 
+		files could be difficult. 
+
+6.> How to implement effective caching
+	
+	1.) separate all Static and Dynamic content into the separate directories in your project
+	folder.
+	2.) USE a CDN Content delivery network to serve static pages instantaneously.
+	3.) We can set Cache header to tell the client browser to cache the content.
+		inside the HTTP response:
+		set the Cache_control header like this in order to cache pages for one day
+		Cache-Control: max-age=86400
+		here 86400 seconds represent one day.
+		
+
+		
+
+	
+		
+		
